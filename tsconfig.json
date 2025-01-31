@@ -29,7 +29,16 @@
       ],
       "@/components/*": [
         "components/*"
-      ]
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/models/*": [
+        "models/*"
+      ], 
+      "@/actions/*": [
+        "../actions/*"
+      ],
     }
   },
   "include": [

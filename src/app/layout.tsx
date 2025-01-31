@@ -38,8 +38,10 @@ export default function RootLayout({
         >
           <SidebarProvider>
             <AppSidebar />
-            <SidebarTrigger />
-            {children}
+            <main className="mx-auto max-w-4xl w-full p-4">
+              <SidebarTrigger />
+              {children}
+            </main>
           </SidebarProvider>
         </ThemeProvider>
       </body>

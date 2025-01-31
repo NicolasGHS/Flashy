@@ -11,11 +11,13 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <p>Start</p>
-      <Button variant="outline" onClick={handleNavigation}>
-        Button
-      </Button>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div className="flex flex-col items-center w-full max-w-xs">
+        <p className="mb-4 text-lg font-medium">Start</p>
+        <Button variant="outline" onClick={handleNavigation}>
+          Button
+        </Button>
+      </div>
     </div>
   );
 }

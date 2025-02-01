@@ -9,16 +9,19 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarFooter
+  SidebarFooter,
 } from "@/components/ui/sidebar";
 
 import { NavUser } from "./nav-user";
 
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+
 const user = {
   name: "John Doe",
   email: "test@example.com",
-  avatar: "/avatars/shadcn.jpg"
-}
+  avatar: "/avatars/shadcn.jpg",
+};
 
 // Menu items.
 const items = [
@@ -39,7 +42,11 @@ const items = [
   },
 ];
 
-export function AppSidebar() {
+export async function AppSidebar() {
+  const session = await getServerSession(authOptions);
+
+  console.log(session?.user?.name);
+
   return (
     <Sidebar>
       <SidebarContent>
@@ -62,7 +69,13 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={user} />
+        <NavUser
+          user={{
+            name: session?.user?.name ?? user.name,
+            email: session?.user?.email ?? user.email,
+            avatar: user.avatar,
+          }}
+        />
       </SidebarFooter>
     </Sidebar>
   );

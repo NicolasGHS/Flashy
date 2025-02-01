@@ -9,7 +9,16 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarFooter
 } from "@/components/ui/sidebar";
+
+import { NavUser } from "./nav-user";
+
+const user = {
+  name: "John Doe",
+  email: "test@example.com",
+  avatar: "/avatars/shadcn.jpg"
+}
 
 // Menu items.
 const items = [
@@ -52,6 +61,9 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <NavUser user={user} />
+      </SidebarFooter>
     </Sidebar>
   );
 }

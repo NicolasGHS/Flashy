@@ -27,11 +27,30 @@ export const authOptions: NextAuthOptions  = {
             );
             
             if (!passwordMatch) throw new Error("Wrong Password");
-            return user;
+            return {
+              id: user._id.toString(),
+              name: user.name,
+              email: user.email,
+            }
         },
       }),
     ],
     session: {
       strategy: "jwt",
-    }
+    },
+    callbacks: {
+      async jwt({ token, user }) {
+        if (user) {
+          token.id = user.id;
+        }
+        return token;
+      },
+      async session({ session, token }) {
+        if (token && session.user) {
+          session.user.id = token.id;
+        }
+        return session;
+    },
+  },
+  secret: process.env.NEXTAUTH_SECRET,
   };

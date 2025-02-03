@@ -19,7 +19,7 @@ import { authOptions } from "@/lib/auth";
 
 const user = {
   name: "John Doe",
-  email: "test@example.com",
+  email: "default@example.com",
   avatar: "/avatars/shadcn.jpg",
 };
 

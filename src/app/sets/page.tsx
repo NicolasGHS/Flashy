@@ -38,7 +38,7 @@ const Sets = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <p>Sets</p>
+      <p>Your sets</p>
 
       {sets.length === 0 ? (
         <p className="text-center">No sets found.</p>

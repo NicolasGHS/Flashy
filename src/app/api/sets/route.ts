@@ -50,6 +50,7 @@ export async function POST(req: Request) {
     console.log("Session:", session);
 
     // Create new set
+    // TODO: refactor way to add cards with model
     const newSet = new Set({
       title,
       description,

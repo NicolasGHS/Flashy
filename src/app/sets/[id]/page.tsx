@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import MoreOptionsIcon from "@/components/more-options-icon";
 
 const Set = () => {
     const params = useParams();
@@ -60,6 +61,7 @@ const Set = () => {
     return (
         <>
             <h1>Set</h1> 
+            <MoreOptionsIcon />
             <p>{set?.title}</p>
         </>
     )

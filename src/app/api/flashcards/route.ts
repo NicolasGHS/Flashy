@@ -5,7 +5,7 @@ import Flashcard from "@/models/Flashcard";
 import { authOptions } from "@/lib/auth";
 
 
-export async function GET() {
+export async function GET(req: Request) {
     try {
         await connectDB();
         const session = await getServerSession(authOptions); 
@@ -14,10 +14,17 @@ export async function GET() {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
         }
 
-        const userId = session.user.id;
+        const { searchParams } = new URL(req.url);
+        const setId = searchParams.get("setId");
 
-        // TODO: find flashcards related to set
-        const flashcards = await Flashcard.find();
+        if (!setId) {
+            return NextResponse.json(
+                { message: "SetId query parameter is required." },
+                { status: 400 }
+            );
+        }
+
+        const flashcards = await Flashcard.find({ set: setId });
         
         return NextResponse.json({ flashcards }, { status: 200 });
     } catch (error) {

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
-import Set from "@/models/Sets";
+import Set from "@/models/Set";
 import { getServerSession } from "next-auth";
 import User from "@/models/User";
 import { authOptions } from "@/lib/auth";
@@ -34,10 +34,10 @@ export async function POST(req: Request) {
     await connectDB();
 
     const body = await req.json();
-    const { title, description, cards } = body;
+    const { title, description } = body;
 
     // Basic validation
-    if (!title || cards.length === 0) {
+    if (!title ) {
       return NextResponse.json(
         { message: "Title and at least one card are required." },
         { status: 400 },
@@ -54,7 +54,6 @@ export async function POST(req: Request) {
     const newSet = new Set({
       title,
       description,
-      cards,
       user: userId,
     });
 

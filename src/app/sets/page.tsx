@@ -48,7 +48,6 @@ const Sets = () => {
             <CardContent className="p-4">
               <h2 className="text-xl font-semibold">{set.title}</h2>
               <p className="text-gray-600">{set.description}</p>
-              <p className="text-sm text-gray-400">{set.cards.length} cards</p>
             </CardContent>
           </Card>
         ))

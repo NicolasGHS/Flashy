@@ -28,14 +28,6 @@ export async function GET() {
   }
 }
 
-// export async function GetById() {
-//   try {
-    
-//   } catch (error) {
-//     console.error("Error fetching set:", error); 
-//   }
-// }
-
 // POST /api/sets
 export async function POST(req: Request) {
   try {

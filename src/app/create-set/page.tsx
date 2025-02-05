@@ -60,10 +60,10 @@ const CreateCard = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
         <div className="flex justify-center">
-        <Button type="submit" variant="outline">
-          Create Set
-        </Button>
-      </div>
+          <Button type="submit" variant="outline">
+            Create Set
+          </Button>
+        </div>
       </form>
     </div>
   );

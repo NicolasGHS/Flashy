@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: Request) {
   try {
     await connectDB();
     const session = await getServerSession(authOptions);
@@ -14,10 +14,11 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    const setId = params.id;
+    const url = new URL(req.url);
+    const setId = url.pathname.split("/").pop();
     const userId = session.user.id;
 
-    const set = await Set.find({ _id: setId, user: userId });
+    const set = await Set.findOne({ _id: setId, user: userId });
 
     if (!set) {
       return NextResponse.json({ message: "Set not found" }, { status: 404 });

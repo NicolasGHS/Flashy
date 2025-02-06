@@ -16,7 +16,7 @@ const Set = () => {
     const setId = params.id;
 
     console.log("Set", set);
-    console.log("cards", cards);
+    console.log("title", set.title);
 
     useEffect(() => {
         const fetchSet = async () => {
@@ -27,8 +27,9 @@ const Set = () => {
 
                 if (response.ok) {
                     const data = await response.json();
+                    console.log("data", data);
 
-                    setSet(data.set[0]);
+                    setSet(data.set);
                 } else {
                     console.error("Failed to fetch set");
                 }
@@ -67,12 +68,12 @@ const Set = () => {
         setCurrIndex((prevIndex) => prevIndex === 0 ? cards.length - 1 : prevIndex - 1);
     };
 
-
     return (
-        <>
-            <h1>Set</h1>
-            <MoreOptionsIcon />
-            <p>{set?.title}</p>
+        <div className="flex flex-col items-center">
+            <div className="flex items-center w-full justify-around p-10">
+                <p className="text-2xl">{set.title}</p>
+                <MoreOptionsIcon />
+            </div>
 
             {cards.length > 0 ? (
                 <>
@@ -93,7 +94,7 @@ const Set = () => {
             {/* {cards.map((card) => (
                 <Flashcard key={card._id} term={card.question} definition={card.answer} />
             ))} */}
-        </>
+        </div>
     );
 };
 

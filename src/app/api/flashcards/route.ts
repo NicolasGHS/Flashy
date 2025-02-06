@@ -3,6 +3,7 @@ import { connectDB } from "@/lib/mongodb";
 import { getServerSession } from "next-auth";
 import Flashcard from "@/models/Flashcard";
 import { authOptions } from "@/lib/auth";
+import Set from "@/models/Set";
 
 export async function GET(req: Request) {
   try {

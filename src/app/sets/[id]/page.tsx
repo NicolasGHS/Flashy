@@ -15,8 +15,6 @@ const Set = () => {
     console.log(params.id);
     const setId = params.id;
 
-    console.log("Set", set);
-    console.log("title", set.title);
 
     useEffect(() => {
         const fetchSet = async () => {
@@ -71,7 +69,7 @@ const Set = () => {
     return (
         <div className="flex flex-col items-center">
             <div className="flex items-center w-full justify-around p-10">
-                <p className="text-2xl">{set.title}</p>
+                <p className="text-2xl">{set?.title || "Loading..."}</p>
                 <MoreOptionsIcon />
             </div>
 

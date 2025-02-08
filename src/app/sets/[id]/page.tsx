@@ -1,5 +1,7 @@
 "use client";
 
+import { GraduationCap, StickyNote, Grid2x2 } from 'lucide-react';
+
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import MoreOptionsIcon from "@/components/more-options-icon";
@@ -72,9 +74,24 @@ const Set = () => {
                 <p className="text-2xl">{set?.title || "Loading..."}</p>
                 <MoreOptionsIcon />
             </div>
+            <div className="mb-8 flex flex-wrap gap-4">
+                <Button variant='outline'>
+                    <StickyNote />
+                    Flashcards
+                </Button>
+                <Button variant='outline'>
+                    <GraduationCap />
+                    Learn
+                </Button>
+                <Button variant='outline'>
+                    <Grid2x2 />
+                    Match
+                </Button>
+            </div>
 
             {cards.length > 0 ? (
                 <>
+                    <p className='mb-2'>{currIndex + 1}/{cards.length}</p>
                     <Flashcard
                         term={cards[currIndex].question}
                         definition={cards[currIndex].answer}

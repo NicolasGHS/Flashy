@@ -5,7 +5,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// TODO: flashcard from id
 
 export default function Flashcard() {
   return (

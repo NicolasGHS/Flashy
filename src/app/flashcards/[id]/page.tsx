@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress"
 import Flashcard from "@/components/ui/Flashcard";
 
 const FlashcardPractice = () => {
@@ -11,6 +12,7 @@ const FlashcardPractice = () => {
     const [cards, setCards] = useState([]);
     const [currIndex, setCurrIndex] = useState(0);
     const setId = params.id;
+    const progressValue = cards.length > 0 ? ((currIndex + 1) / cards.length) * 100 : 0;
 
     useEffect(() => {
         const fetchSet = async () => {
@@ -69,6 +71,7 @@ const FlashcardPractice = () => {
         <div className="flex flex-col items-center">
             <p className="text-2xl">{set?.title || "Loading..."}</p>
             <p className='mb-2'>{currIndex + 1}/{cards.length}</p>
+            <Progress value={progressValue} className="h-2 mb-5" />
 
             {cards.length > 0 ? (
                 <>

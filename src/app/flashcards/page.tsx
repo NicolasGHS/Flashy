@@ -5,10 +5,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+// TODO: flashcard from id
+
 export default function Flashcard() {
   return (
     <>
-      <h1>Flashcards</h1>
       <Card className="w-[350px]">
         <CardHeader>
           <CardTitle>Front of flashcard</CardTitle>

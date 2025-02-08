@@ -4,6 +4,7 @@ import { GraduationCap, StickyNote, Grid2x2 } from 'lucide-react';
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import Link from 'next/link';
 import MoreOptionsIcon from "@/components/more-options-icon";
 import { Button } from "@/components/ui/button";
 import Flashcard from "@/components/ui/Flashcard";
@@ -75,10 +76,14 @@ const Set = () => {
                 <MoreOptionsIcon />
             </div>
             <div className="mb-8 flex flex-wrap gap-4">
-                <Button variant='outline'>
-                    <StickyNote />
-                    Flashcards
-                </Button>
+                <Link
+                    href="/flashcards" 
+                >
+                    <Button variant='outline'>
+                        <StickyNote />
+                        Flashcards
+                    </Button>
+                </Link>
                 <Button variant='outline'>
                     <GraduationCap />
                     Learn
